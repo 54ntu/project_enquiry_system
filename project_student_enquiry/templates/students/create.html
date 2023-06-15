@@ -1,0 +1,25 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    {{ title}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'student-index' %}" class="btn btn-primary btn-sm">back</a>
+    <h1>student create form</h1>
+    <hr>
+    <div class="card p-5">
+        <form action="#" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <input type="submit" class="btn btn-primary btn-sm" value="add details">
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock  %}

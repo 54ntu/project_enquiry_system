@@ -1,0 +1,20 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %}
+    {{title}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <a href="{% url 'course-index' %}" class="btn btn-primary btn-sm">Go back</a>
+    <h1>this is course create page</h1>
+    <hr>
+    <form action="{% url 'course-create' %}" method="post">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary btn-sm" value="add course">
+    </form>
+</div>
+{% endblock %}
