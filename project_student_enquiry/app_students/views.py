@@ -12,7 +12,7 @@ def student_create(request):
 
 
     if request.method == "POST":
-        std = StudentCreateForm(request.POST) ##### here we use  object of form
+        std = StudentCreateForm(request.POST, request.FILES) ##### here we use  object of form
         if std.is_valid():
             std.save()
             return redirect("student-index")

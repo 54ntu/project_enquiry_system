@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 # Create your views here.
@@ -47,6 +49,13 @@ class RegistrationView(View):
             if user is not None: #this line of code will check whether user is created or not
                 user.is_active=True
                 user.save()
+                send_mail(
+                    'Account creation',
+                    'Your account has been created successfully. Welcome to SES',
+                    settings.EMAIL_HOST_USER, 
+                    [user.email] #receiver email address
+
+                )
                 messages.success(request,'Registered successfully')
                 return redirect('login')
             messages.error(request,"something went wrong")

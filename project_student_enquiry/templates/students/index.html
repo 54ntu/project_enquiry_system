@@ -1,9 +1,9 @@
 {% extends 'layouts/master.html' %}
+{% comment %} {% load static %} {% endcomment %}
 
 {% block title %}
     {{ title }}
 {% endblock title %}
-
 
 {% block content %}
 <div class="container">
@@ -16,9 +16,10 @@
                 <th>S.No</th>
                 <th>Name</th>
                 <th>Contact</th>
+                <th>Profile</th>
                 <th>Arrive at</th>
                 <th>Course</th>
-                <th colspan="3">Action</th>
+                <th>Action</th>
             </tr>           
         </thead>
         <tbody>
@@ -27,12 +28,13 @@
                     <td>{{ forloop.counter}}</td>
                     <td>{{ val.first_name}} {{ val.middle_name}} {{ val.last_name}}</td>
                     <td>{{ val.contact}}</td>
+                    <td><img src="{{ val.profile_img.url }}" alt="" height="50" width="50"></td>
                     <td>{{val.created_at}}</td>
                     <td>{{val.course.course_name}}</td>
 
-                    <td>    <a href="{% url 'student-show' val.id %}" class="btn btn-primary btn-sm">show</a></td>
-                    <td>    <a href="{% url 'student-edit' val.id %}" class="btn btn-primary btn-sm">Edit</a></td>
-                    <td>    <a href="{% url 'student-delete' val.id %}" class="btn btn-primary btn-sm">Delete</a></td>
+                    <td>    <a href="{% url 'student-show' val.id %}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
+                        <a href="{% url 'student-edit' val.id %}" class="btn btn-primary btn-sm"><i class="fa-solid fa-pencil"></i></a>
+                        <a href="{% url 'student-delete' val.id %}" class="btn btn-primary btn-sm"><i class="fa-solid fa-trash"></i></a></td>
                 </tr>
             {% endfor %}
         </tbody>
