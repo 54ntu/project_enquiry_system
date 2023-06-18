@@ -1,5 +1,7 @@
 from django.db import models
 from app_courses.models import courseModel
+from django.contrib.auth.models import User
+
 # Create your models here.
 class studentModel(models.Model):
     first_name= models.CharField(max_length=200)
@@ -12,6 +14,8 @@ class studentModel(models.Model):
     profile_img = models.FileField(upload_to='students/profiles',null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     course= models.ForeignKey(courseModel,on_delete=models.CASCADE)
+    user =models.ForeignKey(User,on_delete=models.CASCADE)
+
 
 
     def __str__(self):

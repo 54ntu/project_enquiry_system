@@ -60,3 +60,5 @@ def student_delete(request,id):
     students=studentModel.objects.get(id=id)
     students.delete()
     return redirect('student-index')
+
+
