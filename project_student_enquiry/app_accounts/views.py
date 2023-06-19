@@ -9,6 +9,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 
+
 # Create your views here.
 
 class LoginView(View):
@@ -64,3 +65,10 @@ class RegistrationView(View):
             messages.error(request,'something went wrong')
             return redirect('register')
         
+
+
+
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        return redirect('login')
