@@ -31,6 +31,9 @@ class LoginView(View):
 
 class DashboardView(View):
     def get(self,request):
+      if not request.user.is_authenticated:
+          messages.error(request,'unauthorized access')
+          return redirect('login')
       return render(request,'dashboard.html')
     
 
