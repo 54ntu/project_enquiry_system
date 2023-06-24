@@ -24,7 +24,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('app_courses/',include('app_courses.urls')),
     path('app_students/',include('app_students.urls')),
-    path('',include('app_accounts.urls'))
+    path('',include('app_accounts.urls')),
+    path('api-auth/',include('rest_framework.urls')),
+    path('api/v1/',include('app_api.urls')),
 
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT) #this line of code is for using the static url
 
